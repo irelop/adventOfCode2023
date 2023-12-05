@@ -18,6 +18,10 @@ int main(){
         sscanf(input, "Game %d:", &gameNum);
         char *token = strstr(input, ":");
         token = token + 1;
+
+        size_t len = strcspn(token, "\n");
+        token[len] = '\0';
+
         while(sscanf(token, "%d %9[^,;]", &cubesNum, color)==2 && possible){
 
             if((strcmp("red", color)==0 && cubesNum > RED_MAX)
